@@ -61,6 +61,8 @@ export const Route = createFileRoute("/")({
 });
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5581973224616&text&app_absent=0";
+const GOOGLE_MAPS_REVIEWS_LINK =
+  "https://www.google.com/maps/search/LimpSete+Serviços+de+Limpeza+Pós+obra+Recife";
 
 const SERVICES = [
   {
@@ -138,22 +140,11 @@ const LOCATIONS = [
     label: "Recife - PE",
     title: "Unidade Recife - PE",
     cardTitle: "LimpSete - Recife",
-    address: "Rua Professor José Leão, 1000 - Boa Viagem, Recife - PE, 51020-180",
+    address: "Rua Ernesto de Paula Santos, 1114 - Sala 3 - Boa Viagem, Recife - PE",
     phone: "(81) 97322-4616",
     whatsapp: "(81) 99803-6043",
     email: "contato@limpsete.com",
-    mapQuery: "Boa Viagem Recife PE",
-  },
-  {
-    id: "joao-pessoa",
-    label: "João Pessoa - PB",
-    title: "Unidade João Pessoa - PB",
-    cardTitle: "LimpSete - João Pessoa",
-    address: "Av. Epitácio Pessoa, 1200 - Torre, João Pessoa - PB, 58040-000",
-    phone: "(83) 4000-4876",
-    whatsapp: "(83) 98833-2343",
-    email: "contato@limpsete.com",
-    mapQuery: "Joao Pessoa PB",
+    mapQuery: "Rua Ernesto de Paula Santos 1114 Boa Viagem Recife PE",
   },
 ] as const;
 
@@ -165,123 +156,78 @@ const SOCIAL_LINKS = [
   { label: "Facebook", Icon: Facebook, href: "#" },
 ] as const;
 
+function testimonialAvatar(name: string) {
+  return `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=eaf5ff&color=006fbf&size=128&bold=true`;
+}
+
 const TESTIMONIALS = [
   {
-    text: "A LimpSete superou nossas expectativas. Equipe dedicada, atenta aos detalhes e com um padrão de limpeza impecável. Faz toda a diferença no nosso dia a dia.",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Juliana Martins",
-    role: "Facilities Manager",
-    company: "PortoBank",
-    mark: "PB",
+    text: "Contratamos a limpeza pós-obra da LimpSete e valeu muito a pena. Apesar de não ser um serviço barato, já inclui os produtos específicos e mão de obra especializada. Considero essencial para deixar o ambiente realmente limpo para a mudança após uma obra — sem resquícios de poeira ou sujeira nos vidros e cerâmicas. Foram pontuais no atendimento e indicamos a todos que procuram profissionalismo e pontualidade em limpeza pós-obra.",
+    image: testimonialAvatar("Juliano Freitas"),
+    name: "Juliano Freitas",
+    role: "Cliente",
+    company: "Google Maps",
+    mark: "JF",
   },
   {
-    text: "Profissionalismo, organização e compromisso com prazos. A LimpSete se tornou uma parceira estratégica para manter nosso ambiente sempre limpo e acolhedor.",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Carlos Eduardo",
-    role: "Gerente Administrativo",
-    company: "Sicredi",
-    mark: "SC",
+    text: "Ótimo atendimento, serviço show!",
+    image: testimonialAvatar("Sarah Doce Chá"),
+    name: "Sarah",
+    role: "Doce Chá",
+    company: "Google Maps",
+    mark: "SD",
   },
   {
-    text: "Desde que contratamos a LimpSete, notamos uma grande melhoria na limpeza e na satisfação de todos aqui na empresa. Recomendo de olhos fechados!",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Fernanda Lopes",
-    role: "Coordenadora de Facilities",
-    company: "Havan",
-    mark: "HV",
+    text: "Excelente empresa, estão de parabéns. Empresa muito séria.",
+    image: testimonialAvatar("Almeida Serviços"),
+    name: "Almeida Serviços",
+    role: "Local Guide",
+    company: "Google Maps",
+    mark: "AS",
   },
   {
-    text: "O atendimento é próximo, rápido e muito cuidadoso. As equipes chegam uniformizadas, seguem o cronograma e deixam tudo pronto para a operação começar.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Rafael Moreira",
-    role: "Síndico Profissional",
-    company: "Condomínio Atlântico",
-    mark: "CA",
-  },
-  {
-    text: "Precisávamos de um parceiro para pós-obra com acabamento fino. A LimpSete entregou com pontualidade, cuidado e excelente comunicação.",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Patrícia Nogueira",
-    role: "Arquiteta",
-    company: "Studio Forma",
-    mark: "SF",
-  },
-  {
-    text: "A conservação diária ficou muito mais organizada. O acompanhamento constante da supervisão trouxe segurança para toda a nossa rotina.",
-    image:
-      "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Marina Castro",
-    role: "Coordenadora Administrativa",
-    company: "Clínica Vida",
-    mark: "CV",
-  },
-  {
-    text: "Foi uma contratação tranquila do início ao fim. O time entendeu nossas necessidades e montou uma solução adequada para a nossa loja.",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "André Luiz",
-    role: "Gerente de Operações",
-    company: "RioMar",
-    mark: "RM",
-  },
-  {
-    text: "A limpeza de vidros e áreas comuns ficou impecável. O padrão visual do prédio melhorou muito depois que começamos o contrato.",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Sofia Almeida",
-    role: "Administradora Predial",
-    company: "Edifício Horizonte",
-    mark: "EH",
-  },
-  {
-    text: "Além da execução, gostamos muito dos relatórios e da atenção aos detalhes. É uma empresa que realmente acompanha a qualidade do serviço.",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150",
-    name: "Gustavo Pereira",
-    role: "Diretor Comercial",
-    company: "Grupo Norte",
-    mark: "GN",
+    text: "Excelente empresa de limpeza.",
+    image: testimonialAvatar("Rj Gamer"),
+    name: "Rj Gamer",
+    role: "Cliente",
+    company: "Google Maps",
+    mark: "RG",
   },
 ] as const;
 
 type Testimonial = (typeof TESTIMONIALS)[number];
 
-const FIRST_TESTIMONIAL_COLUMN = TESTIMONIALS.slice(0, 3);
-const SECOND_TESTIMONIAL_COLUMN = TESTIMONIALS.slice(3, 6);
-const THIRD_TESTIMONIAL_COLUMN = TESTIMONIALS.slice(6, 9);
+const FIRST_TESTIMONIAL_COLUMN = TESTIMONIALS.slice(0, 2);
+const SECOND_TESTIMONIAL_COLUMN = TESTIMONIALS.slice(2, 4);
+const THIRD_TESTIMONIAL_COLUMN = TESTIMONIALS.slice(0, 2);
 
 const TEAM = [
   {
-    name: "Daniella Soares",
-    role: "CEO",
-    area: "Estratégia, relacionamento com clientes e expansão comercial",
-    image: daniellaImg,
+    name: "Andréa Soares",
+    role: "Fundadora",
+    area: "Governança, parcerias e fortalecimento institucional",
+    image: andreaImg,
   },
   {
     name: "Wellington Costa",
-    role: "Fundador",
-    area: "Planejamento corporativo e cultura operacional",
+    role: "Sócio",
+    area: "Parceria e Planejamento Corporativo",
     image: wellingtonImg,
   },
   {
-    name: "Andréa Soares",
-    role: "Sócia",
-    area: "Governança, parcerias e fortalecimento institucional",
-    image: andreaImg,
+    name: "Daniella Soares",
+    role: "CEO",
+    area: "Estratégia, relacionamento com clientes, expansão comercial e cultura operacional",
+    image: daniellaImg,
   },
 ] as const;
 
 function Hero() {
   const heroHighlights = [
-    { Icon: Trophy, title: "+12 anos", body: "de experiência" },
+    { Icon: Trophy, title: "+15 anos", body: "de experiência" },
     { Icon: Users, title: "Equipe treinada", body: "e qualificada" },
     { Icon: Shield, title: "Compromisso", body: "com qualidade" },
-    { Icon: Building2, title: "Mais de 50 empresas", body: "atendidas com excelência" },
+    { Icon: Building2, title: "50+ empresas", body: "Atendidas com excelência" },
   ];
 
   return (
@@ -318,8 +264,8 @@ function Hero() {
             <span className="text-primary">excelência</span> em cada{" "}
             <span className="text-primary">detalhe</span>
           </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-[#18345f] md:text-lg">
-            Há mais de 12 anos entregando soluções completas em limpeza com eficiência, confiança e
+          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-[#18345f] md:text-xl">
+            Há mais de 15 anos entregando soluções completas em limpeza com eficiência, confiança e
             atenção a cada detalhe.
           </p>
           <div className="mb-9 flex flex-col justify-center gap-4 sm:flex-row">
@@ -348,13 +294,13 @@ function Hero() {
 
           <div className="hero-stat-grid grid w-full max-w-4xl grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
             {heroHighlights.map(({ Icon, title, body }) => (
-              <div key={title} className="hero-stat-card glass-card rounded-3xl px-4 py-5">
+              <div key={title} className="hero-stat-card glass-card rounded-3xl px-4 py-6 md:px-5">
                 <span className="hero-stat-sweep" aria-hidden="true" />
-                <div className="hero-stat-icon mx-auto mb-3 flex size-10 items-center justify-center rounded-full border border-white/70 bg-white/38 text-primary shadow-[inset_0_1px_0_rgb(255_255_255_/_0.72),0_12px_26px_-18px_rgb(0_86_190_/_0.7)] backdrop-blur-xl">
-                  <Icon className="size-5" />
+                <div className="hero-stat-icon mx-auto mb-3 flex size-11 items-center justify-center rounded-full border border-white/70 bg-white/38 text-primary shadow-[inset_0_1px_0_rgb(255_255_255_/_0.72),0_12px_26px_-18px_rgb(0_86_190_/_0.7)] backdrop-blur-xl">
+                  <Icon className="size-5 md:size-[1.35rem]" />
                 </div>
-                <p className="relative z-10 text-sm font-bold text-[#09224a]">{title}</p>
-                <p className="relative z-10 mt-1 text-xs text-[#27466f]">{body}</p>
+                <p className="relative z-10 text-base font-bold text-[#09224a] md:text-lg">{title}</p>
+                <p className="relative z-10 mt-1 text-sm text-[#27466f] md:text-base">{body}</p>
               </div>
             ))}
           </div>
@@ -411,9 +357,9 @@ function AboutSnapshot() {
             Mais que limpeza, <span className="text-primary">cuidamos de pessoas e ambientes.</span>
           </h2>
 
-          <p className="max-w-xl text-base leading-8 text-[#142849]">
+          <p className="max-w-xl text-lg leading-8 text-[#18345f] md:text-xl md:leading-9">
             A LimpSete nasceu com o propósito de transformar ambientes através da limpeza
-            profissional de excelência. Há mais de 12 anos, entregamos soluções completas com foco
+            profissional de excelência. Há mais de 15 anos, entregamos soluções completas com foco
             em qualidade, confiança e atenção a cada detalhe. Veja Quem atendemos:
           </p>
 
@@ -422,10 +368,10 @@ function AboutSnapshot() {
           <div className="grid max-w-xl grid-cols-3 gap-x-8 gap-y-9">
             {AUDIENCES.map(({ Icon, label }) => (
               <div key={label} className="text-center">
-                <div className="mx-auto mb-3 flex size-11 items-center justify-center text-primary">
-                  <Icon className="size-8 stroke-[1.65]" />
+                <div className="mx-auto mb-3 flex size-12 items-center justify-center text-primary">
+                  <Icon className="size-9 stroke-[1.65]" />
                 </div>
-                <p className="text-[11px] font-semibold leading-snug text-[#0d1e3d]">{label}</p>
+                <p className="text-sm font-semibold leading-snug text-[#0d1e3d] md:text-base">{label}</p>
               </div>
             ))}
           </div>
@@ -672,7 +618,7 @@ function Services() {
                 limpeza e conservação
               </span>
             </h2>
-            <p className="mt-5 max-w-xl text-sm leading-7 text-[#355173]">
+            <p className="mt-5 max-w-xl text-lg leading-8 text-[#18345f] md:text-xl md:leading-9">
               Atuamos com excelência em diferentes ambientes, oferecendo serviços especializados,
               equipamentos modernos e equipes treinadas para garantir resultados impecáveis.
             </p>
@@ -919,9 +865,25 @@ function Testimonials() {
             A confiança de quem já vivencia a <span className="text-primary">excelência</span> da
             LimpSete.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#45617f]">
-            Empresas de diferentes segmentos que contam com a LimpSete e recomendam nossos serviços.
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#45617f] md:text-lg">
+            Depoimentos reais de clientes no Google Maps. A LimpSete tem{" "}
+            <strong className="font-semibold text-[#071838]">5 estrelas</strong> e figura entre as
+            empresas de limpeza pós-obra mais recomendadas da região.
           </p>
+          <a
+            href={GOOGLE_MAPS_REVIEWS_LINK}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-3 rounded-full border border-[#dcecff] bg-white px-5 py-2.5 text-sm font-semibold text-[#071838] shadow-[0_14px_40px_-30px_rgb(0_86_190_/_0.55)] transition-colors hover:border-primary/30 hover:text-primary"
+          >
+            <span className="flex gap-0.5 text-[#ffc928]">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} className="size-4 fill-current" />
+              ))}
+            </span>
+            5,0 no Google Maps
+            <ExternalLink className="size-4 text-primary" />
+          </a>
         </motion.header>
 
         <motion.div
@@ -953,17 +915,25 @@ function Testimonials() {
             </div>
             <div>
               <h3 className="font-display text-xl font-bold tracking-tight text-[#071838]">
-                Resultados que geram confiança.
+                5 estrelas no Google Maps.
               </h3>
               <p className="mt-1 text-sm leading-6 text-[#45617f]">
-                Mais de 50 empresas já transformaram seus ambientes com a LimpSete. A próxima pode
-                ser a sua.
+                Uma das empresas de limpeza pós-obra mais recomendadas — junte-se a quem já confia
+                no nosso trabalho.
               </p>
             </div>
           </div>
 
           <div className="flex flex-col gap-3 md:min-w-[320px] md:items-center">
-            <p className="text-sm text-[#45617f]">Junte-se a quem já confia no nosso trabalho.</p>
+            <a
+              href={GOOGLE_MAPS_REVIEWS_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline"
+            >
+              Ver avaliações no Google Maps
+              <ExternalLink className="size-4" />
+            </a>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
@@ -1063,7 +1033,7 @@ function Contact() {
                 n: "01",
                 Icon: MapPin,
                 title: "Endereço",
-                body: "Rua Rio Azul, 190 D — Boa Viagem, Recife/PE",
+                body: "Rua Ernesto de Paula Santos, 1114 - Sala 3 - Boa Viagem, Recife - PE",
               },
               {
                 n: "02",
@@ -1103,9 +1073,8 @@ function Contact() {
 }
 
 function Locations() {
-  const [activeLocation, setActiveLocation] = useState<(typeof LOCATIONS)[number]["id"]>("recife");
-  const current = LOCATIONS.find((location) => location.id === activeLocation) ?? LOCATIONS[0];
-  const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(current.mapQuery)}&t=m&z=11&output=embed`;
+  const current = LOCATIONS[0];
+  const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(current.mapQuery)}&t=m&z=15&output=embed`;
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f7fbff_0%,#eef7ff_52%,#f8fbff_100%)] px-4 py-20 md:px-6 md:py-28">
@@ -1123,27 +1092,9 @@ function Locations() {
               Perto de você, <span className="text-primary">onde sua empresa estiver.</span>
             </h2>
             <p className="mb-7 max-w-xl text-sm leading-7 text-[#355173]">
-              A LimpSete possui unidades estratégicas para atender com agilidade e qualidade.
-              Escolha a unidade mais próxima e fale com a nossa equipe.
+              Nossa unidade em Recife está pronta para atender com agilidade, qualidade e
+              proximidade. Fale com a nossa equipe.
             </p>
-
-            <div className="mb-5 grid grid-cols-2 gap-3 rounded-2xl bg-primary/5 p-1.5">
-              {LOCATIONS.map((location) => (
-                <button
-                  key={location.id}
-                  type="button"
-                  onClick={() => setActiveLocation(location.id)}
-                  className={`flex h-12 items-center justify-center gap-2 rounded-xl text-sm font-bold transition-all ${
-                    activeLocation === location.id
-                      ? "bg-white text-primary shadow-soft"
-                      : "text-[#405a78] hover:bg-white/60"
-                  }`}
-                >
-                  <MapPin className="size-4" />
-                  {location.label}
-                </button>
-              ))}
-            </div>
 
             <div className="rounded-3xl border border-[#dcecff] bg-white/86 p-5 shadow-[0_18px_60px_-42px_rgb(0_86_190_/_0.65)] backdrop-blur">
               <div className="space-y-4">
@@ -1249,7 +1200,7 @@ function Locations() {
                 </div>
                 <div>
                   <h3 className="font-display text-xl font-bold tracking-tight text-[#071838]">
-                    Duas unidades, o mesmo padrão de excelência
+                    Unidade Recife, padrão de excelência
                   </h3>
                   <p className="mt-1 text-sm leading-6 text-[#405a78]">
                     Estrutura completa, equipe treinada e processos eficientes para entregar os
@@ -1271,7 +1222,7 @@ function Locations() {
                 Atendimento rápido e personalizado
               </h3>
               <p className="text-xs text-[#45617f]">
-                Entre em contato com a unidade mais próxima e descubra como podemos ajudar sua
+                Entre em contato com nossa equipe em Recife e descubra como podemos ajudar sua
                 empresa.
               </p>
             </div>

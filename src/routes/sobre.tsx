@@ -41,7 +41,7 @@ export const Route = createFileRoute("/sobre")({
       {
         property: "og:description",
         content:
-          "Há mais de 12 anos transformando ambientes com limpeza profissional, equipe treinada e compromisso com qualidade.",
+          "Há mais de 15 anos transformando ambientes com limpeza profissional, equipe treinada e compromisso com qualidade.",
       },
     ],
   }),
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/sobre")({
 const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5581973224616&text&app_absent=0";
 
 const HERO_STATS = [
-  { Icon: Trophy, title: "+12 anos", body: "de experiência" },
+  { Icon: Trophy, title: "+15 anos", body: "de experiência" },
   { Icon: Users, title: "Equipe treinada", body: "e qualificada" },
   { Icon: ShieldCheck, title: "Compromisso", body: "com qualidade e segurança" },
 ] as const;
@@ -126,7 +126,7 @@ function AboutPage() {
               </h1>
 
               <p className="mt-7 max-w-2xl text-sm leading-7 text-[#365172] md:text-base">
-                Há mais de 12 anos entregando soluções completas em limpeza com eficiência,
+                Há mais de 15 anos entregando soluções completas em limpeza com eficiência,
                 confiança e atenção a cada detalhe.
               </p>
 
