@@ -1,7 +1,28 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ArrowUpRight, Check, MapPin, Sparkles } from "lucide-react";
 import { Nav, Footer } from "@/components/site-chrome";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
+import cognitivo1 from "@/assets/galeria/colegio-cognitivo/01.jpg";
+import cognitivo2 from "@/assets/galeria/colegio-cognitivo/02.jpg";
+import cognitivo3 from "@/assets/galeria/colegio-cognitivo/03.jpg";
+import cognitivo4 from "@/assets/galeria/colegio-cognitivo/04.jpg";
+import cognitivo5 from "@/assets/galeria/colegio-cognitivo/05.jpg";
+import pousada1 from "@/assets/galeria/pousada-porto-de-galinhas/01.webp";
+import pousada2 from "@/assets/galeria/pousada-porto-de-galinhas/02.webp";
+import pousada3 from "@/assets/galeria/pousada-porto-de-galinhas/03.webp";
+import pousada4 from "@/assets/galeria/pousada-porto-de-galinhas/04.webp";
+import saga1 from "@/assets/galeria/saga/01.jpg";
+import saga2 from "@/assets/galeria/saga/02.jpg";
+import saga3 from "@/assets/galeria/saga/03.jpg";
+import saga4 from "@/assets/galeria/saga/04.jpg";
+import saga5 from "@/assets/galeria/saga/05.jpg";
 import obra1 from "@/assets/obra-1.png";
 import obra2 from "@/assets/obra-2.png";
 import obra3 from "@/assets/obra-3.png";
@@ -121,6 +142,110 @@ const PROJECTS = [
 
 const GALLERY_STATS = ["Pós-obra", "Fachadas", "Pisos industriais", "Operação B2B"] as const;
 
+const PROJECT_CAROUSELS = [
+  {
+    title: "Colégio Saga",
+    tag: "Pós-Obra · Educação",
+    location: "Recife, PE",
+    description:
+      "Limpeza pós-obra no Colégio Saga em parceria com a Megaconstrutora — entrega técnica para inauguração das novas instalações.",
+    images: [
+      { src: saga1, alt: "Limpeza pós-obra Colégio Saga — registro 1" },
+      { src: saga2, alt: "Limpeza pós-obra Colégio Saga — registro 2" },
+      { src: saga3, alt: "Limpeza pós-obra Colégio Saga — registro 3" },
+      { src: saga4, alt: "Limpeza pós-obra Colégio Saga — registro 4" },
+      { src: saga5, alt: "Limpeza pós-obra Colégio Saga — registro 5" },
+    ],
+  },
+  {
+    title: "Colégio Cognitivo",
+    tag: "Pós-Obra · Educação",
+    location: "Boa Viagem, Recife",
+    description:
+      "Mais uma limpeza pós-obra concluída no Colégio Cognitivo — acabamento fino em salas, corredores e áreas comuns.",
+    images: [
+      { src: cognitivo1, alt: "Limpeza pós-obra Colégio Cognitivo — registro 1" },
+      { src: cognitivo2, alt: "Limpeza pós-obra Colégio Cognitivo — registro 2" },
+      { src: cognitivo3, alt: "Limpeza pós-obra Colégio Cognitivo — registro 3" },
+      { src: cognitivo4, alt: "Limpeza pós-obra Colégio Cognitivo — registro 4" },
+      { src: cognitivo5, alt: "Limpeza pós-obra Colégio Cognitivo — registro 5" },
+    ],
+  },
+  {
+    title: "Pousada Porto de Galinhas",
+    tag: "Pós-Obra · Hospitalidade",
+    location: "Porto de Galinhas, PE",
+    description:
+      "Limpeza pós-obra realizada em pousada na região de Porto de Galinhas — preparação completa para receber hóspedes.",
+    images: [
+      { src: pousada1, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 1" },
+      { src: pousada2, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 2" },
+      { src: pousada3, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 3" },
+      { src: pousada4, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 4" },
+    ],
+  },
+] as const;
+
+function ProjectCarousel({
+  title,
+  tag,
+  location,
+  description,
+  images,
+}: (typeof PROJECT_CAROUSELS)[number]) {
+  return (
+    <article className="bg-card rounded-3xl border border-border shadow-soft overflow-hidden">
+      <div className="p-6 md:p-8 border-b border-border">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+          <div className="max-w-2xl">
+            <span className="inline-flex font-mono text-[10px] uppercase tracking-widest bg-primary/10 text-primary px-3 py-1.5 rounded-full mb-3">
+              {tag}
+            </span>
+            <h2 className="font-display font-bold text-2xl md:text-3xl tracking-tight mb-2">{title}</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
+          </div>
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono uppercase tracking-widest shrink-0">
+            <MapPin className="size-3" />
+            {location}
+          </div>
+        </div>
+      </div>
+
+      <div className="p-4 md:p-6">
+        <Carousel
+          opts={{ align: "start", loop: true }}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-3 md:-ml-4">
+            {images.map((image, index) => (
+              <CarouselItem
+                key={image.alt}
+                className="pl-3 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+              >
+                <div className="relative overflow-hidden rounded-2xl border border-border aspect-[4/5] bg-muted">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={800}
+                    height={1000}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                  <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest bg-background/95 backdrop-blur text-foreground px-2.5 py-1 rounded-full">
+                    {String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
+                  </span>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-3 md:left-5 border-border bg-background/95 backdrop-blur shadow-soft" />
+          <CarouselNext className="right-3 md:right-5 border-border bg-background/95 backdrop-blur shadow-soft" />
+        </Carousel>
+      </div>
+    </article>
+  );
+}
+
 function GalleryPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -182,8 +307,36 @@ function GalleryPage() {
           </div>
         </section>
 
+        {/* Project carousels */}
+        <section className="max-w-7xl mx-auto pb-20">
+          <div className="mb-10">
+            <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary bg-primary/10 px-3 py-1.5 rounded-full mb-4">
+              <Sparkles className="size-3" />
+              Projetos recentes
+            </span>
+            <h2 className="font-display font-bold text-3xl md:text-4xl tracking-tight text-balance">
+              Cases entregues em campo
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-2xl">
+              Registros fotográficos de limpezas pós-obra realizadas em escolas, pousadas e empreendimentos
+              parceiros.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {PROJECT_CAROUSELS.map((project) => (
+              <ProjectCarousel key={project.title} {...project} />
+            ))}
+          </div>
+        </section>
+
         {/* Grid */}
         <section className="max-w-7xl mx-auto pb-24">
+          <div className="mb-8">
+            <h2 className="font-display font-bold text-2xl md:text-3xl tracking-tight">
+              Mais registros de operação
+            </h2>
+          </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {PROJECTS.map((p, i) => (
               <article
