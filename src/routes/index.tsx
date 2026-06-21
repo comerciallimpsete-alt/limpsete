@@ -67,7 +67,7 @@ const GOOGLE_MAPS_REVIEWS_LINK =
 const SERVICES = [
   {
     Icon: Sparkles,
-    title: "Limpeza Pós Obra",
+    title: "Limpeza pós obra residencial e empresarial",
     body: "Remoção de resíduos, poeira e sujeiras pesadas de obras, deixando o ambiente pronto para uso.",
     img: sPos,
   },
@@ -145,6 +145,17 @@ const LOCATIONS = [
     whatsapp: "(81) 99803-6043",
     email: "contato@limpsete.com",
     mapQuery: "Rua Ernesto de Paula Santos 1114 Boa Viagem Recife PE",
+  },
+  {
+    id: "joao-pessoa",
+    label: "João Pessoa - PB",
+    title: "Unidade João Pessoa - PB",
+    cardTitle: "LimpSete - João Pessoa",
+    address: "Av. Epitácio Pessoa, 1200 - Torre, João Pessoa - PB, 58040-000",
+    phone: "(83) 98604-2632",
+    whatsapp: "(83) 98604-2632",
+    email: "contato@limpsete.com",
+    mapQuery: "Av Epitacio Pessoa 1200 Joao Pessoa PB",
   },
 ] as const;
 
@@ -1041,7 +1052,7 @@ function Contact() {
                 title: "Comercial",
                 body: "(81) 97322-4616 · (81) 99803-6043",
               },
-              { n: "03", Icon: Mail, title: "E-mail", body: "wellingtoncosta@limpsete.com" },
+              { n: "03", Icon: Mail, title: "E-mail", body: "contato@limpsete.com · wellingtoncosta@limpsete.com.br" },
             ].map(({ n, Icon, title, body }) => (
               <div key={n} className="flex items-center gap-4">
                 <div className="size-12 border border-background/20 rounded-full flex items-center justify-center shrink-0">
@@ -1073,8 +1084,9 @@ function Contact() {
 }
 
 function Locations() {
-  const current = LOCATIONS[0];
-  const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(current.mapQuery)}&t=m&z=15&output=embed`;
+  const [activeLocation, setActiveLocation] = useState<(typeof LOCATIONS)[number]["id"]>("recife");
+  const current = LOCATIONS.find((location) => location.id === activeLocation) ?? LOCATIONS[0];
+  const mapUrl = `https://maps.google.com/maps?q=${encodeURIComponent(current.mapQuery)}&t=m&z=11&output=embed`;
 
   return (
     <section className="relative overflow-hidden bg-[linear-gradient(135deg,#f7fbff_0%,#eef7ff_52%,#f8fbff_100%)] px-4 py-20 md:px-6 md:py-28">
@@ -1092,9 +1104,27 @@ function Locations() {
               Perto de você, <span className="text-primary">onde sua empresa estiver.</span>
             </h2>
             <p className="mb-7 max-w-xl text-sm leading-7 text-[#355173]">
-              Nossa unidade em Recife está pronta para atender com agilidade, qualidade e
-              proximidade. Fale com a nossa equipe.
+              A LimpSete possui unidades estratégicas para atender com agilidade e qualidade.
+              Escolha a unidade mais próxima e fale com a nossa equipe.
             </p>
+
+            <div className="mb-5 grid grid-cols-2 gap-3 rounded-2xl bg-primary/5 p-1.5">
+              {LOCATIONS.map((location) => (
+                <button
+                  key={location.id}
+                  type="button"
+                  onClick={() => setActiveLocation(location.id)}
+                  className={`flex h-12 items-center justify-center gap-2 rounded-xl text-sm font-bold transition-all ${
+                    activeLocation === location.id
+                      ? "bg-white text-primary shadow-soft"
+                      : "text-[#405a78] hover:bg-white/60"
+                  }`}
+                >
+                  <MapPin className="size-4" />
+                  {location.label}
+                </button>
+              ))}
+            </div>
 
             <div className="rounded-3xl border border-[#dcecff] bg-white/86 p-5 shadow-[0_18px_60px_-42px_rgb(0_86_190_/_0.65)] backdrop-blur">
               <div className="space-y-4">
@@ -1103,6 +1133,7 @@ function Locations() {
                   { Icon: Phone, title: "Telefone", body: current.phone },
                   { Icon: MessageCircle, title: "WhatsApp", body: current.whatsapp },
                   { Icon: Mail, title: "E-mail", body: current.email },
+                  { Icon: Mail, title: "Comercial", body: "wellingtoncosta@limpsete.com.br" },
                 ].map(({ Icon, title, body }) => (
                   <div
                     key={title}
@@ -1200,7 +1231,7 @@ function Locations() {
                 </div>
                 <div>
                   <h3 className="font-display text-xl font-bold tracking-tight text-[#071838]">
-                    Unidade Recife, padrão de excelência
+                    Duas unidades, o mesmo padrão de excelência
                   </h3>
                   <p className="mt-1 text-sm leading-6 text-[#405a78]">
                     Estrutura completa, equipe treinada e processos eficientes para entregar os
@@ -1222,7 +1253,7 @@ function Locations() {
                 Atendimento rápido e personalizado
               </h3>
               <p className="text-xs text-[#45617f]">
-                Entre em contato com nossa equipe em Recife e descubra como podemos ajudar sua
+                Entre em contato com a unidade mais próxima e descubra como podemos ajudar sua
                 empresa.
               </p>
             </div>
