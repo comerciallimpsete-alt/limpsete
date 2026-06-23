@@ -31,15 +31,16 @@ import {
   Linkedin,
   Youtube,
   Facebook,
-  X as XIcon,
+  Home as HomeIcon,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Nav, Footer } from "@/components/site-chrome";
 import { ClientMarquee } from "@/components/client-marquee";
+import { HashScrollHandler, SectionLink } from "@/components/section-link";
 
 import heroBg from "../../imagens gerais/limpeza-pos-obra.png";
-import trainingBg from "../../imagens gerais/limpsetetreinamento.png";
+import residentialBg from "../../imagens gerais/residencial limpeza.png";
 import carousel7Img from "../../fotos do carrossel/7.png";
 import carousel8Img from "../../fotos do carrossel/8.png";
 import carousel9Img from "../../fotos do carrossel/9.png";
@@ -119,7 +120,7 @@ const AUDIENCES = [
   { Icon: ShoppingCart, label: "Comércios e lojas" },
   { Icon: GraduationCap, label: "Escolas e instituições" },
   { Icon: Stethoscope, label: "Clínicas e consultórios" },
-  { Icon: Building2, label: "Condomínios e residenciais" },
+  { Icon: Building2, label: "Condomínios, Residências e Apartamentos" },
   { Icon: Factory, label: "Indústrias e galpões" },
 ] as const;
 
@@ -160,10 +161,9 @@ const LOCATIONS = [
 ] as const;
 
 const SOCIAL_LINKS = [
-  { label: "Instagram", Icon: Instagram, href: "#" },
+  { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/limpsete/" },
   { label: "LinkedIn", Icon: Linkedin, href: "#" },
   { label: "YouTube", Icon: Youtube, href: "#" },
-  { label: "X", Icon: XIcon, href: "#" },
   { label: "Facebook", Icon: Facebook, href: "#" },
 ] as const;
 
@@ -220,16 +220,16 @@ const TEAM = [
     image: andreaImg,
   },
   {
-    name: "Wellington Costa",
-    role: "Sócio",
-    area: "Parceria e Planejamento Corporativo",
-    image: wellingtonImg,
-  },
-  {
     name: "Daniella Soares",
     role: "CEO",
     area: "Estratégia, relacionamento com clientes, expansão comercial e cultura operacional",
     image: daniellaImg,
+  },
+  {
+    name: "Wellington Costa",
+    role: "Sócio",
+    area: "Parceria e Planejamento Corporativo",
+    image: wellingtonImg,
   },
 ] as const;
 
@@ -238,7 +238,7 @@ function Hero() {
     { Icon: Trophy, title: "+15 anos", body: "de experiência" },
     { Icon: Users, title: "Equipe treinada", body: "e qualificada" },
     { Icon: Shield, title: "Compromisso", body: "com qualidade" },
-    { Icon: Building2, title: "50+ empresas", body: "Atendidas com excelência" },
+    { Icon: Building2, title: "300+ Empresas e Residências", body: "Atendidas" },
   ];
 
   return (
@@ -323,14 +323,13 @@ function Hero() {
           transition={{ type: "spring", stiffness: 420, damping: 18 }}
           className="mt-7 hidden md:block"
         >
-          <Link
-            to="/"
-            hash="sobre"
+          <SectionLink
+            sectionId="sobre"
             aria-label="Rolar para a próxima seção"
             className="flex size-12 items-center justify-center rounded-full border border-white/70 bg-[linear-gradient(135deg,#dff3ff_0%,#7cc9ff_45%,#168dff_100%)] text-white shadow-[inset_0_1px_0_rgb(255_255_255_/_0.8),inset_0_-10px_18px_rgb(0_112_255_/_0.22),0_18px_38px_-18px_rgb(0_105_220_/_0.82)] transition-shadow active:shadow-[inset_0_2px_12px_rgb(0_76_180_/_0.28),0_10px_24px_-18px_rgb(0_105_220_/_0.75)]"
           >
             <ArrowDown className="size-5" />
-          </Link>
+          </SectionLink>
         </motion.div>
       </div>
     </section>
@@ -445,7 +444,7 @@ function ClientTrustBar() {
         <div className="absolute inset-x-10 top-1/2 h-24 -translate-y-1/2 rounded-full bg-primary/18 blur-3xl" />
         <div className="relative overflow-hidden rounded-[1.75rem] border border-[#dcecff] bg-white/78 py-6 shadow-[0_18px_60px_-42px_rgb(0_86_190_/_0.58)] backdrop-blur">
           <p className="mb-6 text-center text-sm font-semibold text-[#172b4d]">
-            <span className="text-primary">Mais de 50 empresas</span> confiam na LimpSete
+            <span className="text-primary">Mais de 300 empresas</span> confiam na LimpSete
           </p>
 
           <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
@@ -593,14 +592,13 @@ function ServiceCard({ Icon, title, body, img }: ServiceCardProps) {
           </h3>
           <p className="mb-7 text-xs leading-6 text-[#405a78]">{body}</p>
 
-          <Link
-            to="/"
-            hash="contato"
+          <SectionLink
+            sectionId="contato"
             className="mt-auto inline-flex w-fit items-center gap-2 text-xs font-bold text-primary transition-all group-hover:gap-3"
           >
             Saiba mais
             <ArrowRight className="size-4" />
-          </Link>
+          </SectionLink>
         </div>
       </div>
     </motion.article>
@@ -675,13 +673,13 @@ function Services() {
           </div>
 
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
-              to="/galeria"
+            <SectionLink
+              sectionId="contato"
               className="inline-flex h-11 items-center justify-center gap-2 rounded-xl border border-[#cfe4ff] px-6 text-sm font-semibold text-primary transition-colors hover:bg-primary/5"
             >
               Saiba mais
               <ArrowRight className="size-4" />
-            </Link>
+            </SectionLink>
             <a
               href={WHATSAPP_LINK}
               target="_blank"
@@ -698,13 +696,13 @@ function Services() {
   );
 }
 
-function Training() {
+function ResidentialCleaning() {
   return (
     <section className="px-4 py-20 md:px-6 md:py-28">
       <div className="relative mx-auto min-h-[680px] max-w-7xl overflow-hidden rounded-[2.25rem] bg-[#071838] px-6 py-24 text-center text-white shadow-[0_30px_90px_-45px_rgb(2_16_38_/_0.95)] md:px-10">
         <img
-          src={trainingBg}
-          alt="Treinamento de equipe LimpSete"
+          src={residentialBg}
+          alt="Limpeza residencial em apartamentos e residências familiares"
           width={1280}
           height={768}
           loading="lazy"
@@ -715,48 +713,45 @@ function Training() {
 
         <div className="relative mx-auto flex min-h-[500px] max-w-4xl flex-col items-center justify-center">
           <span className="mb-6 inline-flex items-center gap-2 rounded-xl border border-white/55 bg-white/90 px-4 py-2 text-xs font-extrabold uppercase tracking-wide text-primary shadow-[0_14px_35px_-20px_rgb(255_255_255_/_0.55)]">
-            <Users className="size-4" />
-            Treinamos sua equipe
+            <HomeIcon className="size-4" />
+            Limpeza Residencial
           </span>
 
           <h2 className="max-w-3xl text-balance font-display text-4xl font-extrabold leading-[1.08] tracking-tight md:text-6xl">
-            Mais que executar,
-            <br />
-            ensinamos a <span className="text-primary">Excelência.</span>
+            Apartamentos e{" "}
+            <span className="text-primary">residências familiares.</span>
           </h2>
 
           <div className="my-6 h-0.5 w-16 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
           <p className="mx-auto max-w-xl text-base leading-8 text-white/88">
-            Nosso time é preparado para treinar e desenvolver sua equipe com um método próprio,
-            prático e eficiente, garantindo padrão, qualidade e consistência em cada detalhe da
-            limpeza.
+            Cuidamos de casas, apartamentos e condomínios residenciais com limpeza pós-obra,
+            conservação e acabamento fino — para você receber família, morar ou alugar com
+            tranquilidade.
           </p>
 
           <div className="mt-8 flex w-full max-w-[560px] items-center gap-5 rounded-2xl border border-white/65 bg-white/90 p-5 text-left text-[#10264a] shadow-[0_22px_70px_-38px_rgb(255_255_255_/_0.6)] backdrop-blur">
             <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-              <Users className="size-8 stroke-[1.65]" />
+              <Sparkles className="size-8 stroke-[1.65]" />
             </div>
             <div>
               <h3 className="font-display text-lg font-bold tracking-tight">
-                Um método comprovado. Resultados reais.
+                Seu lar impecável, do jeito que você merece.
               </h3>
               <p className="mt-1 text-sm leading-6 text-[#34506f]">
-                Nosso passo a passo já transformou a rotina de limpeza em centenas de empresas,
-                elevando padrões e gerando confiança.
+                Equipe treinada, produtos adequados e atenção aos detalhes em cada cômodo — da
+                cozinha ao quarto, do pós-obra à manutenção.
               </p>
             </div>
           </div>
 
-          <Button
-            asChild
-            className="primary-glow-button mt-8 h-12 rounded-2xl px-8 text-sm font-semibold text-white"
+          <SectionLink
+            sectionId="contato"
+            className="primary-glow-button mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-2xl px-8 text-sm font-semibold text-white"
           >
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              Fale com um especialista
-              <ArrowRight className="size-4" />
-            </a>
-          </Button>
+            Solicitar orçamento
+            <ArrowRight className="size-4" />
+          </SectionLink>
         </div>
       </div>
     </section>
@@ -1031,11 +1026,11 @@ function Contact() {
             Solicitar Orçamento
           </span>
           <h2 className="text-4xl md:text-6xl font-display font-bold tracking-tight mb-8">
-            Pronto para elevar o padrão da sua operação?
+            Eleve o padrão do seu imóvel, seja ele residencial ou empresarial.
           </h2>
           <p className="text-background/70 text-lg mb-12 max-w-md">
-            Solicite uma visita técnica ou um orçamento detalhado para seu condomínio, indústria ou
-            evento.
+            Solicite uma visita técnica ou um orçamento detalhado para apartamentos, casas,
+            condomínios, indústrias ou eventos.
           </p>
 
           <div className="space-y-6 mb-10">
@@ -1052,7 +1047,7 @@ function Contact() {
                 title: "Comercial",
                 body: "(81) 97322-4616 · (81) 99803-6043",
               },
-              { n: "03", Icon: Mail, title: "E-mail", body: "contato@limpsete.com · wellingtoncosta@limpsete.com.br" },
+              { n: "03", Icon: Mail, title: "E-mail", body: "contato@limpsete.com · comercial@limpsete.com" },
             ].map(({ n, Icon, title, body }) => (
               <div key={n} className="flex items-center gap-4">
                 <div className="size-12 border border-background/20 rounded-full flex items-center justify-center shrink-0">
@@ -1133,7 +1128,7 @@ function Locations() {
                   { Icon: Phone, title: "Telefone", body: current.phone },
                   { Icon: MessageCircle, title: "WhatsApp", body: current.whatsapp },
                   { Icon: Mail, title: "E-mail", body: current.email },
-                  { Icon: Mail, title: "Comercial", body: "wellingtoncosta@limpsete.com.br" },
+                  { Icon: Mail, title: "Comercial", body: "comercial@limpsete.com" },
                 ].map(({ Icon, title, body }) => (
                   <div
                     key={title}
@@ -1276,13 +1271,14 @@ function Locations() {
 function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <HashScrollHandler />
       <Nav />
       <main>
         <Hero />
         <AboutSnapshot />
         <ClientTrustBar />
         <Services />
-        <Training />
+        <ResidentialCleaning />
         <Testimonials />
         <Team />
         <About />

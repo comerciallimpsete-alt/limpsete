@@ -14,13 +14,10 @@ const DISPLAY_NAMES: Record<string, string> = {
   natura: "Natura",
   neoenergia: "Neoenergia",
   o_boticario: "O Boticário",
-  plaenge: "Plaenge",
-  porto_bank: "PortoBank",
   riomar: "RioMar",
   serrambi_resort: "Serrambi Resort",
   sesi: "SESI",
   sicredi: "Sicredi",
-  unimed: "Unimed",
 };
 
 function slugFromPath(path: string) {

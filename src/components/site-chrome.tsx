@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import logoImg from "@/assets/logo3.png";
+import { SectionLink } from "@/components/section-link";
 
 export function Logo() {
   return (
@@ -11,8 +12,8 @@ export function Logo() {
   );
 }
 
-type NavLink = { label: string } & (
-  | { to: "/"; hash?: string }
+type NavLink = { label: string; sectionId?: string } & (
+  | { to: "/" }
   | { to: "/sobre" }
   | { to: "/galeria" }
 );
@@ -21,11 +22,11 @@ const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5581973224616&text&a
 
 const NAV: NavLink[] = [
   { label: "Início", to: "/" },
-  { label: "Serviços", to: "/", hash: "servicos" },
-  { label: "Time", to: "/", hash: "time" },
+  { label: "Serviços", to: "/", sectionId: "servicos" },
+  { label: "Time", to: "/", sectionId: "time" },
   { label: "Sobre", to: "/sobre" },
   { label: "Galeria", to: "/galeria" },
-  { label: "Contato", to: "/", hash: "contato" },
+  { label: "Contato", to: "/", sectionId: "contato" },
 ];
 
 export function Nav() {
@@ -34,20 +35,19 @@ export function Nav() {
   return (
     <div className="sticky top-4 z-50 px-4 md:px-6 pt-4">
       <nav className="glass-nav max-w-7xl mx-auto rounded-full h-16 px-4 md:px-6 flex items-center justify-between">
-        <Link to="/">
+        <SectionLink sectionId="top" aria-label="Ir para o início">
           <Logo />
-        </Link>
+        </SectionLink>
         <div className="hidden md:flex items-center gap-6 text-sm font-medium">
           {NAV.map((n) =>
             n.to === "/" ? (
-              <Link
+              <SectionLink
                 key={n.label}
-                to="/"
-                hash={n.hash}
+                sectionId={n.sectionId}
                 className="text-[#16345f]/80 hover:text-[#071838] transition-colors"
               >
                 {n.label}
-              </Link>
+              </SectionLink>
             ) : (
               <Link
                 key={n.label}
@@ -94,9 +94,9 @@ export function Nav() {
         }`}
       >
         <div className="flex items-center justify-between">
-          <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+          <SectionLink sectionId="top" onNavigate={() => setMobileMenuOpen(false)} aria-label="Ir para o início">
             <Logo />
-          </Link>
+          </SectionLink>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
@@ -110,15 +110,14 @@ export function Nav() {
         <div className="mt-8 flex flex-col gap-2">
           {NAV.map((n) =>
             n.to === "/" ? (
-              <Link
+              <SectionLink
                 key={n.label}
-                to="/"
-                hash={n.hash}
-                onClick={() => setMobileMenuOpen(false)}
+                sectionId={n.sectionId}
+                onNavigate={() => setMobileMenuOpen(false)}
                 className="rounded-2xl px-4 py-3 text-base font-bold text-[#16345f] transition-colors hover:bg-primary/8 hover:text-primary"
               >
                 {n.label}
-              </Link>
+              </SectionLink>
             ) : (
               <Link
                 key={n.label}
@@ -156,7 +155,7 @@ export function Footer() {
           © {new Date().getFullYear()} LimpSete. Todos os direitos reservados.
         </p>
         <div className="flex gap-6 text-xs font-mono uppercase tracking-widest">
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+          <a href="https://www.instagram.com/limpsete/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             Instagram
           </a>
           <a href="#" className="text-muted-foreground hover:text-primary transition-colors">

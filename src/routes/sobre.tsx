@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { SectionLink } from "@/components/section-link";
 import {
   ArrowRight,
   BadgeCheck,
@@ -140,14 +141,13 @@ function AboutPage() {
                   <MessageCircle className="size-4" />
                   Fale com um especialista
                 </a>
-                <Link
-                  to="/"
-                  hash="servicos"
+                <SectionLink
+                  sectionId="servicos"
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-[#bcd8f7] bg-white/60 px-7 text-sm font-bold text-[#1c4778] shadow-[0_14px_40px_-30px_rgb(0_86_190_/_0.6)] backdrop-blur transition-all hover:-translate-y-0.5 hover:bg-white"
                 >
                   Nossos serviços
                   <ArrowRight className="size-4" />
-                </Link>
+                </SectionLink>
               </div>
 
               <div className="mt-12 grid gap-4 sm:grid-cols-3">
@@ -206,7 +206,7 @@ function AboutPage() {
                     </span>
                   </div>
                   <div>
-                    <p className="text-sm font-extrabold text-primary">Mais de 50 empresas</p>
+                    <p className="text-sm font-extrabold text-primary">Mais de 300 empresas</p>
                     <p className="text-xs text-[#405a78]">atendidas com excelência</p>
                   </div>
                 </div>

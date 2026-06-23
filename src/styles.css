@@ -494,3 +494,17 @@
 .work-carousel-track:hover {
   animation-play-state: paused;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+[id] {
+  scroll-margin-top: 6.5rem;
+}
