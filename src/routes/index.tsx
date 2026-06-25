@@ -39,7 +39,7 @@ import { Nav, Footer } from "@/components/site-chrome";
 import { ClientMarquee } from "@/components/client-marquee";
 import { HashScrollHandler, SectionLink } from "@/components/section-link";
 
-import heroBg from "../../imagens gerais/limpeza-pos-obra.png";
+import heroBg from "../../imagens gerais/img da hero principal.png";
 import residentialBg from "../../imagens gerais/residencial limpeza.png";
 import carousel7Img from "../../fotos do carrossel/7.png";
 import carousel8Img from "../../fotos do carrossel/8.png";
@@ -162,9 +162,17 @@ const LOCATIONS = [
 
 const SOCIAL_LINKS = [
   { label: "Instagram", Icon: Instagram, href: "https://www.instagram.com/limpsete/" },
-  { label: "LinkedIn", Icon: Linkedin, href: "#" },
+  {
+    label: "LinkedIn",
+    Icon: Linkedin,
+    href: "https://www.linkedin.com/in/limpsete-especializada-em-limpeza-p%C3%B3s-obra-4ba61a419/",
+  },
   { label: "YouTube", Icon: Youtube, href: "#" },
-  { label: "Facebook", Icon: Facebook, href: "#" },
+  {
+    label: "Facebook",
+    Icon: Facebook,
+    href: "https://www.facebook.com/profile.php?id=61589796284857",
+  },
 ] as const;
 
 function testimonialAvatar(name: string) {
@@ -237,7 +245,7 @@ function Hero() {
   const heroHighlights = [
     { Icon: Trophy, title: "+15 anos", body: "de experiência" },
     { Icon: Users, title: "Equipe treinada", body: "e qualificada" },
-    { Icon: Shield, title: "Compromisso", body: "com qualidade" },
+    { Icon: MapPin, title: "Atendemos:", body: "Recife, João Pessoa e região" },
     { Icon: Building2, title: "300+ Empresas e Residências", body: "Atendidas" },
   ];
 
@@ -1039,15 +1047,49 @@ function Contact() {
                 n: "01",
                 Icon: MapPin,
                 title: "Endereço",
-                body: "Rua Ernesto de Paula Santos, 1114 - Sala 3 - Boa Viagem, Recife - PE",
+                body: (
+                  <div className="space-y-3">
+                    <p>
+                      <span className="block text-sm text-background/60">Endereço 1 — Recife - PE</span>
+                      <span className="font-medium">{LOCATIONS[0].address}</span>
+                    </p>
+                    <p>
+                      <span className="block text-sm text-background/60">Endereço 2 — João Pessoa - PB</span>
+                      <span className="font-medium">{LOCATIONS[1].address}</span>
+                    </p>
+                  </div>
+                ),
               },
               {
                 n: "02",
                 Icon: Phone,
                 title: "Comercial",
-                body: "(81) 97322-4616 · (81) 99803-6043",
+                body: (
+                  <div className="space-y-3">
+                    <p>
+                      <span className="block text-sm text-background/60">Recife - PE</span>
+                      <span className="font-medium">
+                        {LOCATIONS[0].phone} · {LOCATIONS[0].whatsapp}
+                      </span>
+                    </p>
+                    <p>
+                      <span className="block text-sm text-background/60">João Pessoa - PB</span>
+                      <span className="font-medium">
+                        {LOCATIONS[1].phone}
+                        {LOCATIONS[1].phone !== LOCATIONS[1].whatsapp
+                          ? ` · ${LOCATIONS[1].whatsapp}`
+                          : ""}
+                      </span>
+                    </p>
+                  </div>
+                ),
               },
-              { n: "03", Icon: Mail, title: "E-mail", body: "contato@limpsete.com · comercial@limpsete.com" },
+              {
+                n: "03",
+                Icon: Mail,
+                title: "E-mail",
+                body: "contato@limpsete.com · comercial@limpsete.com",
+              },
             ].map(({ n, Icon, title, body }) => (
               <div key={n} className="flex items-center gap-4">
                 <div className="size-12 border border-background/20 rounded-full flex items-center justify-center shrink-0">
@@ -1057,7 +1099,7 @@ function Contact() {
                   <p className="font-mono text-[10px] uppercase tracking-widest text-background/50">
                     {n} — {title}
                   </p>
-                  <p className="font-medium">{body}</p>
+                  {typeof body === "string" ? <p className="font-medium">{body}</p> : body}
                 </div>
               </div>
             ))}

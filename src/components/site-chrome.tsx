@@ -158,7 +158,12 @@ export function Footer() {
           <a href="https://www.instagram.com/limpsete/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
             Instagram
           </a>
-          <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+          <a
+            href="https://www.linkedin.com/in/limpsete-especializada-em-limpeza-p%C3%B3s-obra-4ba61a419/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-primary transition-colors"
+          >
             LinkedIn
           </a>
         </div>
