@@ -152,11 +152,11 @@ const LOCATIONS = [
     label: "João Pessoa - PB",
     title: "Unidade João Pessoa - PB",
     cardTitle: "LimpSete - João Pessoa",
-    address: "Av. Epitácio Pessoa, 1200 - Torre, João Pessoa - PB, 58040-000",
+    address: "Rua Helena Meira Lima, 801 - Tambaú, João Pessoa - PB",
     phone: "(83) 98604-2632",
     whatsapp: "(83) 98604-2632",
     email: "contato@limpsete.com",
-    mapQuery: "Av Epitacio Pessoa 1200 Joao Pessoa PB",
+    mapQuery: "Rua Helena Meira Lima 801 Tambaú João Pessoa PB",
   },
 ] as const;
 
@@ -1044,7 +1044,6 @@ function Contact() {
           <div className="space-y-6 mb-10">
             {[
               {
-                n: "01",
                 Icon: MapPin,
                 title: "Endereço",
                 body: (
@@ -1061,7 +1060,6 @@ function Contact() {
                 ),
               },
               {
-                n: "02",
                 Icon: Phone,
                 title: "Comercial",
                 body: (
@@ -1085,19 +1083,18 @@ function Contact() {
                 ),
               },
               {
-                n: "03",
                 Icon: Mail,
                 title: "E-mail",
                 body: "contato@limpsete.com · comercial@limpsete.com",
               },
-            ].map(({ n, Icon, title, body }) => (
-              <div key={n} className="flex items-center gap-4">
+            ].map(({ Icon, title, body }) => (
+              <div key={title} className="flex items-center gap-4">
                 <div className="size-12 border border-background/20 rounded-full flex items-center justify-center shrink-0">
                   <Icon className="size-4" />
                 </div>
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-widest text-background/50">
-                    {n} — {title}
+                    {title}
                   </p>
                   {typeof body === "string" ? <p className="font-medium">{body}</p> : body}
                 </div>
