@@ -8,16 +8,18 @@ const DISPLAY_NAMES: Record<string, string> = {
   brde: "BRDE",
   carrefour: "Carrefour",
   colegio_cognitivo: "Colégio Cognitivo",
-  ferreira_costa: "Ferreira Costa",
-  grupo_boticario: "Grupo Boticário",
+  consul: "Consul",
+  dnata: "dnata",
+  flor_de_mandacaru: "Flor de Mandacaru",
   hapvida: "Hapvida",
-  natura: "Natura",
-  neoenergia: "Neoenergia",
-  o_boticario: "O Boticário",
+  honda_motos: "Honda Motos",
+  mercado_livre: "Mercado Livre",
   riomar: "RioMar",
+  saga: "SAGA",
   serrambi_resort: "Serrambi Resort",
   sesi: "SESI",
   sicredi: "Sicredi",
+  toyolex: "Toyolex",
 };
 
 function slugFromPath(path: string) {

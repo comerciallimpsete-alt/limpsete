@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowUpRight, Check, MapPin, Sparkles } from "lucide-react";
+import { ArrowUpRight, Check, Instagram, MapPin, Sparkles } from "lucide-react";
 import { Nav, Footer } from "@/components/site-chrome";
+import { ClientMarquee } from "@/components/client-marquee";
 import {
   Carousel,
   CarouselContent,
@@ -16,8 +17,14 @@ import cognitivo4 from "@/assets/galeria/colegio-cognitivo/04.jpg";
 import cognitivo5 from "@/assets/galeria/colegio-cognitivo/05.jpg";
 import pousada1 from "@/assets/galeria/pousada-porto-de-galinhas/01.webp";
 import pousada2 from "@/assets/galeria/pousada-porto-de-galinhas/02.webp";
-import pousada3 from "@/assets/galeria/pousada-porto-de-galinhas/03.webp";
 import pousada4 from "@/assets/galeria/pousada-porto-de-galinhas/04.webp";
+import dnata1 from "@/assets/galeria/dnata/01.jpg";
+import dnata2 from "@/assets/galeria/dnata/02.jpg";
+import dnata3 from "@/assets/galeria/dnata/03.jpg";
+import dnata4 from "@/assets/galeria/dnata/04.jpg";
+import dnata5 from "@/assets/galeria/dnata/05.jpg";
+import dnata6 from "@/assets/galeria/dnata/06.jpg";
+import dnata7 from "@/assets/galeria/dnata/07.jpg";
 import saga1 from "@/assets/galeria/saga/01.jpg";
 import saga2 from "@/assets/galeria/saga/02.jpg";
 import saga3 from "@/assets/galeria/saga/03.jpg";
@@ -33,6 +40,8 @@ import obra7 from "@/assets/obra-7.png";
 import obra8 from "@/assets/obra-8.png";
 import obra9 from "@/assets/obra-9.png";
 import obra10 from "@/assets/obra-10.png";
+
+const INSTAGRAM_LINK = "https://www.instagram.com/limpsete/";
 
 const WHATSAPP_LINK = "https://api.whatsapp.com/send/?phone=5581973224616&text&app_absent=0";
 
@@ -180,8 +189,23 @@ const PROJECT_CAROUSELS = [
     images: [
       { src: pousada1, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 1" },
       { src: pousada2, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 2" },
-      { src: pousada3, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 3" },
-      { src: pousada4, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 4" },
+      { src: pousada4, alt: "Limpeza pós-obra Pousada Porto de Galinhas — registro 3" },
+    ],
+  },
+  {
+    title: "dnata",
+    tag: "Pós-Obra · Corporativo",
+    location: "Recife, PE",
+    description:
+      "Limpeza pós-obra e organização de ambientes corporativos para a dnata — preparação técnica de áreas operacionais e administrativas para entrega final.",
+    images: [
+      { src: dnata1, alt: "Limpeza pós-obra dnata — registro 1" },
+      { src: dnata2, alt: "Limpeza pós-obra dnata — registro 2" },
+      { src: dnata3, alt: "Limpeza pós-obra dnata — registro 3" },
+      { src: dnata4, alt: "Limpeza pós-obra dnata — registro 4" },
+      { src: dnata5, alt: "Limpeza pós-obra dnata — registro 5" },
+      { src: dnata6, alt: "Limpeza pós-obra dnata — registro 6" },
+      { src: dnata7, alt: "Limpeza pós-obra dnata — registro 7" },
     ],
   },
 ] as const;
@@ -246,6 +270,64 @@ function ProjectCarousel({
   );
 }
 
+function BrandsTrustBar() {
+  return (
+    <section className="max-w-7xl mx-auto pb-12">
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-[#dcecff] bg-white/78 py-6 shadow-[0_18px_60px_-42px_rgb(0_86_190_/_0.58)] backdrop-blur">
+        <div className="absolute inset-x-10 top-1/2 h-24 -translate-y-1/2 rounded-full bg-primary/18 blur-3xl" />
+        <p className="relative mb-6 text-center text-sm font-semibold text-[#172b4d]">
+          <span className="text-primary">Mais de 300 empresas</span> confiam na LimpSete
+        </p>
+        <div className="relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_12%,black_88%,transparent)]">
+          <ClientMarquee variant="home" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function InstagramHighlight() {
+  return (
+    <section className="max-w-7xl mx-auto pb-16">
+      <div className="relative overflow-hidden rounded-[1.75rem] border border-border bg-[linear-gradient(135deg,#fff8fc_0%,#f7fbff_45%,#eef7ff_100%)] p-8 md:p-10 shadow-soft">
+        <div className="absolute -top-16 -right-10 size-56 rounded-full bg-primary/10 blur-3xl" />
+        <div className="absolute bottom-0 left-0 size-40 rounded-full bg-[#dd2a7b]/10 blur-3xl" />
+
+        <div className="relative grid gap-8 md:grid-cols-[auto_1fr] md:items-center">
+          <div className="flex size-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-[#f58529] via-[#dd2a7b] to-[#8134af] text-white shadow-[0_16px_40px_-20px_rgb(221_42_123_/_0.75)]">
+            <Instagram className="size-8" />
+          </div>
+
+          <div className="space-y-4">
+            <div>
+              <span className="mb-2 inline-flex font-mono text-[10px] uppercase tracking-widest text-primary">
+                Redes sociais
+              </span>
+              <h2 className="font-display text-2xl font-bold tracking-tight md:text-3xl">
+                Veja muito mais no Instagram
+              </h2>
+              <p className="mt-3 max-w-2xl text-muted-foreground leading-relaxed">
+                Além dos registros desta página, você pode acompanhar outros trabalhos realizados,
+                bastidores das operações e o dia a dia da LimpSete nas redes sociais.
+              </p>
+            </div>
+
+            <a
+              href={INSTAGRAM_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="primary-glow-button inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            >
+              Seguir @limpsete
+              <ArrowUpRight className="size-4" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function GalleryPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -306,6 +388,8 @@ function GalleryPage() {
             ))}
           </div>
         </section>
+
+        <BrandsTrustBar />
 
         {/* Project carousels */}
         <section className="max-w-7xl mx-auto pb-20">
@@ -382,6 +466,8 @@ function GalleryPage() {
             ))}
           </div>
         </section>
+
+        <InstagramHighlight />
 
         {/* CTA */}
         <section className="max-w-7xl mx-auto pb-24">
